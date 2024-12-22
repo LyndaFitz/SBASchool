@@ -9,4 +9,4 @@ public interface CourseI {
     Course getCourseById(int courseId);
     List<Course> getAllCourses();
 
-}
+} 

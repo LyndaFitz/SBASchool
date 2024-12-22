@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PUBLIC)
 class StudentServiceTest {
 
     static StudentService studentService;
@@ -26,16 +26,21 @@ class StudentServiceTest {
 
     @Test
     void getAllStudents() {
-
-        List<Student> expected = new ArrayList<>(Arrays.asList(
+    	
+    	
+        List<Student> expectedStudents  = new ArrayList<>(Arrays.asList(
                 new Student("reema@gmail.com", "reema brown", "password"),
                 new Student("annette@gmail.com", "annette allen", "password"),
                 new Student("anthony@gmail.com", "anthony gallegos", "password"),
                 new Student("ariadna@gmail.com", "ariadna ramirez", "password"),
                 new Student("bolaji@gmail.com", "bolaji saibu", "password")
         ));
+        
+        List<Student> actualStudents = studentService.getAllStudents();
 
-        assertThat(studentService.getAllStudents()).hasSameElementsAs(expected);
+        System.out.println("Expected Students: " + expectedStudents);
+        System.out.println("Actual Students: " + actualStudents);
 
+        assertThat(actualStudents).hasSameElementsAs(expectedStudents);
     }
 }
